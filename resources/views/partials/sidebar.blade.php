@@ -99,9 +99,11 @@
 
         <!-- Logout -->
         <li class="nav-item">
-          <a href="{{ route('logout') }}" class="nav-link text-danger">
-            <i class="nav-icon bi bi-box-arrow-right"></i>
-            <p>Logout</p>
+          <a href="{{ route('logout') }}" 
+            class="nav-link"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              <i class="nav-icon bi bi-box-arrow-right"></i>
+              <p>Logout</p>
           </a>
         </li>
 

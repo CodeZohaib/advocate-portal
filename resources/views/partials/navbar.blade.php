@@ -14,7 +14,16 @@
         <a href="{{ route('profile.edit') }}" class="nav-link">Profile</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+           <a href="{{ route('logout') }}" 
+            class="nav-link"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              
+              <p>Logout</p>
+          </a>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
       </li>
     </ul>
 

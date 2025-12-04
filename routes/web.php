@@ -7,7 +7,7 @@ use App\Http\Controllers\CaseRecordController;
 use App\Http\Controllers\PaymentController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -20,17 +20,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::controller(ClientController::class)->prefix('client')->name('client.')->group(function(){
+Route::controller(ClientController::class)->prefix('client')->name('client.')->middleware(['auth', 'verified'])->group(function(){
     Route::get('/active','activeClient')->name('active');
      Route::get('/inactive','inactiveClient')->name('inactive');
 });
 
-Route::controller(CaseRecordController::class)->prefix('caseRecord')->name('caseRecord.')->group(function(){
+Route::controller(CaseRecordController::class)->prefix('caseRecord')->name('caseRecord.')->middleware(['auth', 'verified'])->group(function(){
     Route::get('/active','activeCases')->name('active');
     Route::get('/closed','closeCases')->name('closed');
 });
 
-Route::controller(PaymentController::class)->prefix('payment')->name('payment.')->group(function(){
+Route::controller(PaymentController::class)->prefix('payment')->name('payment.')->middleware(['auth', 'verified'])->group(function(){
     Route::get('/cases','casesPayment')->name('cases');
     Route::get('/invoice','invocie')->name('invoice');
     Route::get('/invoice-print','invoicePrint')->name('invoicePrint');

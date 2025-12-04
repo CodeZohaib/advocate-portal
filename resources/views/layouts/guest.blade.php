@@ -15,6 +15,33 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
+        <nav class="bg-gray-900 shadow px-6 py-4 flex justify-between items-center">
+
+            <!-- LEFT SIDE ADDITION -->
+            <div class="flex items-center gap-4">
+                <span class="text-xl font-bold text-black">Advocate Portal</span>
+            </div>
+
+            <!-- RIGHT SIDE SAME AS YOUR CODE -->
+            <div class="space-x-4">
+                
+                    <a href="{{ route('login') }}">
+                        <button class="text-black bg-gray-200 px-5 py-2 rounded-md transition">
+                            Login
+                        </button>
+                    </a>
+
+                    <a href="{{ route('register') }}">
+                        <button class="text-black bg-gray-200 px-5 py-2 rounded-md transition">
+                            Register
+                        </button>
+                    </a>
+                
+            </div>
+
+        </nav>
+
+
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
                 <a href="/">
