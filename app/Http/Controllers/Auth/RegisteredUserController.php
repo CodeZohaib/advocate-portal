@@ -29,16 +29,31 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'contact' => 'required|string|max:15',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048', 
         ]);
 
+        if ($request->hasFile('profile_image')) 
+        {
+            $path = $request->file('profile_image')->store('profiles');
+            $storedName = basename($path);
+        }
+        else 
+        {
+            $storedName = 'profile.JPG';
+        }
+    
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone_no' => $request->contact,
             'password' => Hash::make($request->password),
+            'profile_image' => $storedName,
         ]);
 
         event(new Registered($user));

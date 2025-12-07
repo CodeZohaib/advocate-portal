@@ -11,7 +11,7 @@
     <!-- Sidebar user panel -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+        <img src="{{ route('profile.image','FrTbyI7NdoguZsq6SH3LikBTmGwP7agFrbYtg3p5.jpg') }}" class="img-circle elevation-2" style="height:30px" alt="User Image">
       </div>
       <div class="info">
         <a href="{{ route('profile.edit') }}" class="d-block">Zohaib Khan</a>
@@ -24,7 +24,7 @@
 
         <!-- Dashboard -->
         <li class="nav-item">
-          <a href="/project/dashboard.php" class="nav-link">
+          <a href="{{ route('dashboard') }}" class="nav-link">
             <i class="nav-icon bi bi-speedometer2"></i>
             <p>Dashboard</p>
           </a>

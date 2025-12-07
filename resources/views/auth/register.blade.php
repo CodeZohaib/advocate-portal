@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
 
         <!-- Name -->
@@ -14,6 +14,13 @@
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Contact No -->
+        <div class="mt-4">
+            <x-input-label for="contact" :value="__('Contact No')" />
+            <x-text-input id="contact_no" class="block mt-1 w-full" type="text" name="contact" :value="old('contact')" required />
+            <x-input-error :messages="$errors->get('contact')" class="mt-2" />
         </div>
 
         <!-- Password -->
@@ -38,6 +45,14 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+
+         <!-- Profile Image -->
+        <div class="mt-4">
+            <x-input-label for="profile_image" :value="__('Profile Image')" />
+            <input id="profile_image" class="block mt-1 w-full" type="file" name="profile_image" accept="image/*">
+            <x-input-error :messages="$errors->get('profile_image')" class="mt-2" />
+        </div>
+
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">

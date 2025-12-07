@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\CaseRecordController;
 use App\Http\Controllers\PaymentController;
 
@@ -35,5 +36,8 @@ Route::controller(PaymentController::class)->prefix('payment')->name('payment.')
     Route::get('/invoice','invocie')->name('invoice');
     Route::get('/invoice-print','invoicePrint')->name('invoicePrint');
 });
+
+Route::get('/profileImage/{img}', [ClientController::class, 'showProfileImage'])->name('profile.image')->middleware('auth');
+
 
 require __DIR__.'/auth.php';
